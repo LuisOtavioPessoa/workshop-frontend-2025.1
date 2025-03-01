@@ -48,7 +48,7 @@ export default function PokemonList(){
             {filteredData.map((pokemon) => (
                 <div
                     key = {pokemon.id} 
-                    className="border-4 border-black rounded-xl p-4 bg-gradient-to-b from-red-500 to-white shadow-lg">
+                    className="border-4 border-black rounded-xl p-4 bg-gradient-to-b from-red-500 to-white shadow-lg flex justify-center items-center">
                 <PokemonCard 
                     pokemon = {pokemon}
                     image={pokemon.images.large}
