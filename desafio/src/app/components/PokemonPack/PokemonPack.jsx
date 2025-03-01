@@ -16,14 +16,16 @@ export default function PokemonPack() {
 
     const pickRandomPokemon = () => {
         if (allPokemon.length > 0) {
-            const embaralha = [...allPokemon].sort(() => 0.5 - Math.random()); // <- Sort serve para ordenar o Array de todos os Pokemons e retornar ele
+            const embaralha = [...allPokemon].sort(() => 0.5 - Math.random()); // <- Sort serve para ordenar o Array de todos os Pokemons e retornar ele. (0.5 - Math.random) faz com que a ordem dos elementos gere aleatoriamente 
             setPokemonPack(embaralha.slice(0, 6)); // <- Slice irá selecionar os 6 primeiros pokemons do array "embaralha"
         }
     };
 
     return (
         <>
-            <div className="flex flex-col items-center">
+            <div 
+                className="flex flex-col items-center">
+
                 <button
                     onClick={pickRandomPokemon}
                     className="relative flex items-center justify-center border-4 border-black text-black font-bold text-4xl p-4 px-6 rounded-xl w-104 h-20 shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 bg-gradient-to-b from-red-500 to-white cursor-pointer"
@@ -43,8 +45,11 @@ export default function PokemonPack() {
                     {pokemonPack.map((pokemon) => (
                         <div 
                             key={pokemon.id}
-                            className="flex justify-center items-center"> {/* Alinha o card no centro */}
-                            <div className="border-4 border-black rounded-xl p-4 bg-gradient-to-b from-red-500 to-white shadow-lg">
+                            className="flex justify-center items-center"> 
+
+                            <div 
+                                className="border-4 border-black rounded-xl p-4 bg-gradient-to-b from-red-500 to-white shadow-lg">
+                                    
                                 <PokemonCard
                                     pokemon={pokemon}
                                     image={pokemon.images.large} 

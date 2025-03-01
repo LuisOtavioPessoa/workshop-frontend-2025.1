@@ -13,11 +13,11 @@ export default function Carrossel() {
     const [imagemAtual, setImagemAtual] = useState(0);
 
     function nextSlide() {
-        setImagemAtual(imagemAtual === imagesCarrossel.length - 1 ? 0 : imagemAtual + 1);
+        setImagemAtual(imagemAtual === imagesCarrossel.length - 1 ? 0 : imagemAtual + 1); // <- Se o Array tiver na última imagem vai retornar para 0, senão, vai para a próxima imagem
     }
 
     function prevSlide() {
-        setImagemAtual(imagemAtual === 0 ? imagesCarrossel.length - 1 : imagemAtual - 1);
+        setImagemAtual(imagemAtual === 0 ? imagesCarrossel.length - 1 : imagemAtual - 1); // <- Se o Array tiver na primeira imagem vai retornar para a última,senão, volta para a imagem anterior
     }
 
     return (
@@ -36,8 +36,9 @@ export default function Carrossel() {
             
             <div 
                 className="w-full max-w-full md:max-w-[1000px] lg:max-w-[1200px] h-[300px] md:h-[500px] lg:h-[700px] bg-gray-100 rounded-2xl shadow-lg flex justify-center items-center overflow-hidden">
+
                 {imagesCarrossel.map(
-                    (imagemCarrossel, index) =>
+                    (imagemCarrossel, index) => // <- ImagemCarrossel representa o item atual da iteração dentro do Array
                         imagemAtual === index && (
                             <div 
                                 key={imagemCarrossel} 
@@ -52,13 +53,13 @@ export default function Carrossel() {
                 )}
             </div>
 
-            
             <img
                 src="images/right-arrow.png"
                 alt="seta-direita"
                 className="absolute right-5 z-10 bg-gray-200 p-3 rounded-lg cursor-pointer w-16 hover:scale-110 transition sm:w-12 md:w-16 lg:w-16 xl:w-16"
                 onClick={nextSlide}
             />
+            
         </div>
     );
 }

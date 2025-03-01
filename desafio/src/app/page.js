@@ -7,9 +7,12 @@ import PokemonPack from "./components/PokemonPack/PokemonPack";
 
 export default function Home() {
   return(
-    <main className="flex flex-col items-center justify-start p-16 py-12 min-h-screen">
+    <main 
+        className="flex flex-col items-center justify-start p-16 py-12 min-h-screen">
         
-      <div className="min-w-full">
+      <div 
+          className="min-w-full">
+
         {/* ---HEADER--- */}
         <Nav/>
       </div>
@@ -23,6 +26,7 @@ export default function Home() {
       {/* ---Lista das Cartas--- */}
       <PokemonList/>
 
+      {/* Rodapé */}
       <Footer/>
 
     </main>

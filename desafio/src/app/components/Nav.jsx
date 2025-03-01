@@ -10,7 +10,9 @@ export default function Nav(){
             <a 
             href="#home"
             className="text-2xl font-semibold"
-            >Início</a>
+            >
+            Início
+            </a>
             
         </div>
 
@@ -20,7 +22,9 @@ export default function Nav(){
             <a 
             href="#cartas"
             className="text-2xl font-semibold"
-            >Cartas</a>
+            >
+            Cartas
+            </a>
             
         </div>
     </div>

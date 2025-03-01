@@ -3,8 +3,11 @@ export default function PokemonCard({ pokemon }) {
         <div 
             className="flex flex-col items-center justify-around gap-3 bg-blue-700 rounded-xl p-3 w-full sm:w-[300px] md:w-[350px] lg:w-[400px] shadow-lg">
             
-            <div className="flex flex-col items-center gap-3 justify-center">
-                <h1 className="font-bold text-4xl text-center text-slate-950">
+            <div 
+                className="flex flex-col items-center gap-3 justify-center">
+
+                <h1 
+                    className="font-bold text-4xl text-center text-slate-950">
                     {pokemon.name}
                 </h1>
 
@@ -14,9 +17,11 @@ export default function PokemonCard({ pokemon }) {
                     alt={pokemon.name} 
                 />
 
-                <p className="font-bold text-3xl text-center text-slate-950">
+                <p 
+                    className="font-bold text-3xl text-center text-slate-950">
                     Tipo: {pokemon.types}
                 </p>
+                
             </div>
         </div>
     );
