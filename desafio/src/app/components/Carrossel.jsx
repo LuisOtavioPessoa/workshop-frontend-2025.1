@@ -22,20 +22,20 @@ export default function Carrossel() {
 
     return (
         <div 
-            id = "home"
+            id="home"
             className="w-full flex justify-center items-center mt-20 mb-20 relative">
             
-            {/* Botão esquerdo - Fora do carrossel */}
+            
             <img
                 src="images/left-arrow.png"
                 alt="seta-esquerda"
-                className="absolute left-5 z-10 bg-zinc-200 p-3 rounded-lg cursor-pointer w-16 hover:scale-110 transition"
+                className="absolute left-5 z-10 bg-zinc-200 p-3 rounded-lg cursor-pointer w-16 hover:scale-110 transition sm:w-12 md:w-16 lg:w-16 xl:w-16"
                 onClick={prevSlide}
             />
 
-            {/* Container do carrossel */}
+            
             <div 
-                className="w-[1200px] h-[700px] bg-gray-100 rounded-2xl shadow-lg flex justify-center items-center overflow-hidden">
+                className="w-full max-w-full md:max-w-[1000px] lg:max-w-[1200px] h-[300px] md:h-[500px] lg:h-[700px] bg-gray-100 rounded-2xl shadow-lg flex justify-center items-center overflow-hidden">
                 {imagesCarrossel.map(
                     (imagemCarrossel, index) =>
                         imagemAtual === index && (
@@ -52,11 +52,11 @@ export default function Carrossel() {
                 )}
             </div>
 
-            {/* Botão direito - Fora do carrossel */}
+            
             <img
                 src="images/right-arrow.png"
                 alt="seta-direita"
-                className="absolute right-5 z-10 bg-gray-200 p-3 rounded-lg cursor-pointer w-16 hover:scale-110 transition"
+                className="absolute right-5 z-10 bg-gray-200 p-3 rounded-lg cursor-pointer w-16 hover:scale-110 transition sm:w-12 md:w-16 lg:w-16 xl:w-16"
                 onClick={nextSlide}
             />
         </div>
