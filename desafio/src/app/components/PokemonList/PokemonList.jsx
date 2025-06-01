@@ -5,14 +5,37 @@ import PokemonCard from "../PokemonCard/PokemonCard";
 export default function PokemonList() {
 
     const [data, setData] = useState([]);
+    const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
     const [search, setSearch] = useState("");
     
+    const fetchCards = async (pageNumber) => {
+        setLoading(true);
+        try {
+            const response = await fetch(`https://api.pokemontcg.io/v2/cards?page=${pageNumber}&pageSize=20`);
+            const result = await response.json();
+
+            if (result.data.length === 0) {
+                setHasMore(false);
+            } else {
+                setData((prevData) => [...prevData, ...result.data]);
+            }
+        } catch (error){
+            console.error("Erro ao buscar cards:", error);
+        }
+        setLoading(false);
+    };
+
     useEffect(() => {
-        fetch("https://api.pokemontcg.io/v2/cards")
-        .then((Response) => Response.json())
-        .then((data) => setData(data.data))
-        .catch((error) => console.error(error));
-    }, []);
+        fetchCards(page);
+    }, [page]);
+
+    const loadMoreCards = () => {
+        if (!loading && hasMore){
+            setPage((prevPage) => prevPage + 1);
+        }
+    };
 
     const filteredData = data.filter((pokemon) =>
         pokemon.name.toLowerCase().includes(search.toLowerCase()) || // <- Verifica o Nome do Pokemon
@@ -56,6 +79,17 @@ export default function PokemonList() {
                     </div>
                 ))}
             </div>
+
+            {hasMore && (
+                <div className="flex justify-center mb-8">
+                    <button
+                        onClick={loadMoreCards}
+                         className="border-4 border-black text-black font-bold text-3xl p-2 px-6 rounded-xl w-96 h-16 shadow-md focus:outline-none focus:ring-2 focus:ring-red-500 bg-gradient-to-b from-red-500 to-white cursor-pointer"
+                        >
+                        {loading ? "Carregando..." : "Mostrar Mais"}
+                    </button>
+                </div>
+            )}
         </>
     );
 }
