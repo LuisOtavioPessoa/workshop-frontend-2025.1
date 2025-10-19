@@ -48,7 +48,7 @@ export default function PokemonList() {
         ))}
       </div>
 
-      {loading && <p className="text-center font-bold text-2xl">Carregando...</p>}
+      {loading && <p className="text-center border-4 border-black text-black font-bold text-2xl p-4 px-6 rounded-xl w-96 h-16 shadow-md bg-gradient-to-b from-red-500 to-white  cursor-not-allowed">Carregando...</p>}
     </>
   );
 }
