@@ -2,9 +2,9 @@
 const BASE_URL = "https://api.pokemontcg.io/v2/cards";
 
 // Cabeçalhos recomendados pela API
-const HEADERS = {
-    "X-Api-Key": "YOUR_API_KEY_IF_ANY", // se tiver, senão pode remover
-};
+const HEADERS = process.env.NEXT_PUBLIC_POKEMON_API_KEY
+  ? { "X-Api-Key": process.env.NEXT_PUBLIC_POKEMON_API_KEY }
+  : {};
 
 export const fetchPokemonPage = async (page = 1, pageSize = 20) => {
     try {
