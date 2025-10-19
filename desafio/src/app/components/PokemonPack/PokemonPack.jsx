@@ -1,9 +1,8 @@
-// src/app/components/PokemonPack/PokemonPack.jsx
 "use client";
 
 import { useEffect, useState } from "react";
 import PokemonCard from "../PokemonCard/PokemonCard";
-import { fetchPokemonPage } from "@/app/utils/pokemonAPI";
+import { fetchAllPokemon } from "@/app/utils/pokemonAPI";
 
 export default function PokemonPack() {
   const [pokemonPack, setPokemonPack] = useState([]);
@@ -11,19 +10,18 @@ export default function PokemonPack() {
 
   // Busca apenas 250 pokemons para não sobrecarregar a API
   useEffect(() => {
-    fetchPokemonPage(1, 250)
+    fetchAllPokemon()
       .then((data) => setAllPokemon(data))
       .catch((err) => console.error("Erro ao buscar Pokémon para pack:", err));
   }, []);
 
   const pickRandomPokemon = () => {
     if (allPokemon.length > 0) {
-      // Filtra os que ainda não estão no pack
       const remainingPokemon = allPokemon.filter(
         (p) => !pokemonPack.some((card) => card.id === p.id)
       );
 
-      if (remainingPokemon.length === 0) return; // Todos já estão no pack
+      if (remainingPokemon.length === 0) return;
 
       const shuffled = [...remainingPokemon].sort(() => 0.5 - Math.random());
       setPokemonPack(shuffled.slice(0, 6));

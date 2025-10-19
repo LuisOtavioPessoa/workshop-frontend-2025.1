@@ -3,7 +3,8 @@
 
 import { useEffect, useState } from "react";
 import PokemonCard from "../PokemonCard/PokemonCard";
-import { fetchPokemonPage } from "@/app/utils/pokemonAPI";
+import { fetchAllPokemon } from "@/app/utils/pokemonAPI";
+
 
 export default function PokemonList() {
     const [data, setData] = useState([]);
@@ -14,7 +15,7 @@ export default function PokemonList() {
 
     const fetchCards = async (pageNumber) => {
         setLoading(true);
-        const result = await fetchPokemonPage(pageNumber);
+        const result = await fetchAllPokemon(pageNumber);
         if (result.length === 0) {
             setHasMore(false);
         } else {
